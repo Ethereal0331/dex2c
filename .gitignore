@@ -11,3 +11,6 @@ tools/apktool.jar
 *.idsig
 work/
 *.dex2c-orig
+
+# Conversion scratch space
+dex2c-work/

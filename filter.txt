@@ -1,6 +1,2 @@
 # Rules match the DEX class name in L...; form, concatenated with method name and prototype.
-# Only matching methods are converted to native code.
-# Leave view, animation and reflection heavy classes in Java; they do not survive.
-
-Lcom/ethereal/mcpe/login/.*
-Lcom/ethereal/mcpe/hook/.*
+Lhyj/fuck/gaorunlong/InfoActivity
