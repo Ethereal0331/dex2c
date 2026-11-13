@@ -1,0 +1,12 @@
+# Runtime state
+.venv/
+__pycache__/
+*.pyc
+
+# Fetched tooling
+tools/apktool.jar
+
+# Scratch output
+*.apk
+*.idsig
+work/
