@@ -1,0 +1,215 @@
+#include "Dex2C.h"
+
+/* Lcom/ethereal/mcpe/login/CookieLoginHook$3;->run()V */
+extern "C" JNIEXPORT void JNICALL
+Java_com_ethereal_mcpe_login_CookieLoginHook_000243_run__(JNIEnv *env, jobject thiz){
+jobject v0 = NULL;
+jobject v1 = NULL;
+jobject v2 = NULL;
+jobject v3 = NULL;
+jobject v4 = NULL;
+jlong v5;
+jint v6;
+jthrowable exception;
+jclass cls0 = NULL,cls1 = NULL,cls2 = NULL,cls3 = NULL;
+jfieldID fld0 = NULL;
+jmethodID mth0 = NULL, mth1 = NULL, mth2 = NULL, mth3 = NULL, mth4 = NULL, mth5 = NULL, mth6 = NULL, mth7 = NULL;
+v0 = (jobject)env->NewLocalRef(thiz);
+L0:
+LOGD("0:invoke-static \x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x43\x6f\x6f\x6b\x69\x65\x4c\x6f\x67\x69\x6e\x48\x6f\x6f\x6b\x3b\x2d\x3e\x2d\x24\x24\x4e\x65\x73\x74\x24\x73\x6d\x66\x69\x6e\x64\x52\x65\x73\x75\x6d\x65\x64\x47\x61\x6d\x65\x41\x63\x74\x69\x76\x69\x74\x79\x28\x29\x4c\x61\x6e\x64\x72\x6f\x69\x64\x2f\x61\x70\x70\x2f\x41\x63\x74\x69\x76\x69\x74\x79\x3b");
+{
+#define EX_HANDLE EX_LandingPad_0
+jclass &clz = cls0;
+jmethodID &mid = mth0;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/CookieLoginHook", "-$$Nest$smfindResumedGameActivity", "()Landroid/app/Activity;");
+jvalue args[] = {};
+v1 = (jobject) env->CallStaticObjectMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("6:move-result-object \x76\x30");
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+v2 = (jobject) v1;
+LOGD("8:if-eqz \x76\x30\x2c\x20\x2b\x38");
+if(v2 == NULL){
+goto L3;
+}
+else {
+goto L1;
+}
+L1:
+LOGD("c:invoke-static \x76\x30\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x43\x6f\x6f\x6b\x69\x65\x4c\x6f\x67\x69\x6e\x48\x6f\x6f\x6b\x3b\x2d\x3e\x2d\x24\x24\x4e\x65\x73\x74\x24\x73\x6d\x6e\x6f\x74\x69\x66\x79\x47\x61\x6d\x65\x41\x63\x74\x69\x76\x69\x74\x79\x52\x65\x73\x75\x6d\x65\x64\x28\x4c\x61\x6e\x64\x72\x6f\x69\x64\x2f\x61\x70\x70\x2f\x41\x63\x74\x69\x76\x69\x74\x79\x3b\x29\x56");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls0;
+jmethodID &mid = mth1;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/CookieLoginHook", "-$$Nest$smnotifyGameActivityResumed", "(Landroid/app/Activity;)V");
+jvalue args[] = {{.l = v2}};
+env->CallStaticVoidMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+goto L3;
+L2:
+LOGD("14:move-exception \x76\x30");
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+v2 = exception;
+goto L4;
+L3:
+goto L5;
+L4:
+LOGD("1c:new-instance \x76\x31\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x42\x75\x69\x6c\x64\x65\x72\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+jclass &clz = cls1;
+D2C_RESOLVE_CLASS(clz,"java/lang/StringBuilder");
+v3 = (jobject) env->AllocObject(clz);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("20:invoke-direct \x76\x31\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x42\x75\x69\x6c\x64\x65\x72\x3b\x2d\x3e\x3c\x69\x6e\x69\x74\x3e\x28\x29\x56");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+jclass &clz = cls1;
+jmethodID &mid = mth2;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/StringBuilder", "<init>", "()V");
+jvalue args[] = {};
+env->CallVoidMethodA(v3, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("26:const-string \x76\x32\x2c\x20\x27\x68\x65\x61\x72\x74\x62\x65\x61\x74\x20\x63\x68\x65\x63\x6b\x20\x66\x61\x69\x6c\x65\x64\x3a\x20\x27");
+if (v4) {
+LOGD("env->DeleteLocalRef(%p):v4", v4);
+env->DeleteLocalRef(v4);
+}
+v4 = (jstring) env->NewStringUTF("\x68\x65\x61\x72\x74\x62\x65\x61\x74\x20\x63\x68\x65\x63\x6b\x20\x66\x61\x69\x6c\x65\x64\x3a\x20");
+LOGD("2a:invoke-virtual \x76\x31\x2c\x20\x76\x32\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x42\x75\x69\x6c\x64\x65\x72\x3b\x2d\x3e\x61\x70\x70\x65\x6e\x64\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x42\x75\x69\x6c\x64\x65\x72\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+jclass &clz = cls1;
+jmethodID &mid = mth3;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;");
+jvalue args[] = {{.l = v4}};
+v1 = (jobject) env->CallObjectMethodA(v3, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v1) {
+LOGD("env->DeleteLocalRef(%p):v1", v1);
+env->DeleteLocalRef(v1);
+}
+LOGD("30:invoke-static \x76\x30\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x43\x6f\x6f\x6b\x69\x65\x4c\x6f\x67\x69\x6e\x48\x6f\x6f\x6b\x3b\x2d\x3e\x2d\x24\x24\x4e\x65\x73\x74\x24\x73\x6d\x72\x6f\x6f\x74\x4d\x65\x73\x73\x61\x67\x65\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x54\x68\x72\x6f\x77\x61\x62\x6c\x65\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls0;
+jmethodID &mid = mth4;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/CookieLoginHook", "-$$Nest$smrootMessage", "(Ljava/lang/Throwable;)Ljava/lang/String;");
+jvalue args[] = {{.l = v2}};
+v1 = (jstring) env->CallStaticObjectMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("36:move-result-object \x76\x32");
+if (v4) {
+LOGD("env->DeleteLocalRef(%p):v4", v4);
+env->DeleteLocalRef(v4);
+}
+v4 = (jobject) v1;
+LOGD("38:invoke-virtual \x76\x31\x2c\x20\x76\x32\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x42\x75\x69\x6c\x64\x65\x72\x3b\x2d\x3e\x61\x70\x70\x65\x6e\x64\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x42\x75\x69\x6c\x64\x65\x72\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+jclass &clz = cls1;
+jmethodID &mid = mth3;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/StringBuilder", "append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;");
+jvalue args[] = {{.l = v4}};
+v1 = (jobject) env->CallObjectMethodA(v3, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v1) {
+LOGD("env->DeleteLocalRef(%p):v1", v1);
+env->DeleteLocalRef(v1);
+}
+LOGD("3e:invoke-virtual \x76\x31\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x42\x75\x69\x6c\x64\x65\x72\x3b\x2d\x3e\x74\x6f\x53\x74\x72\x69\x6e\x67\x28\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+jclass &clz = cls1;
+jmethodID &mid = mth5;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/StringBuilder", "toString", "()Ljava/lang/String;");
+jvalue args[] = {};
+v1 = (jstring) env->CallObjectMethodA(v3, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("44:move-result-object \x76\x31");
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+v3 = (jobject) v1;
+LOGD("46:invoke-static \x76\x31\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x43\x6f\x6f\x6b\x69\x65\x4c\x6f\x67\x69\x6e\x48\x6f\x6f\x6b\x3b\x2d\x3e\x2d\x24\x24\x4e\x65\x73\x74\x24\x73\x6d\x6c\x6f\x67\x44\x65\x62\x75\x67\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x56");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls0;
+jmethodID &mid = mth6;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/CookieLoginHook", "-$$Nest$smlogDebug", "(Ljava/lang/String;)V");
+jvalue args[] = {{.l = v3}};
+env->CallStaticVoidMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+L5:
+LOGD("4c:iget-object \x76\x30\x2c\x20\x76\x33\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x43\x6f\x6f\x6b\x69\x65\x4c\x6f\x67\x69\x6e\x48\x6f\x6f\x6b\x24\x33\x3b\x2d\x3e\x76\x61\x6c\x24\x68\x61\x6e\x64\x6c\x65\x72\x20\x4c\x61\x6e\x64\x72\x6f\x69\x64\x2f\x6f\x73\x2f\x48\x61\x6e\x64\x6c\x65\x72\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v0);
+jclass &clz = cls2;
+jfieldID &fld = fld0;
+D2C_RESOLVE_FIELD(clz, fld, "com/ethereal/mcpe/login/CookieLoginHook$3", "val$handler", "Landroid/os/Handler;");
+v1 = (jobject) env->GetObjectField(v0,fld);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+v2 = (jobject) v1;
+v5 = 2000;
+LOGD("54:invoke-virtual \x76\x30\x2c\x20\x76\x33\x2c\x20\x76\x31\x2c\x20\x76\x32\x2c\x20\x4c\x61\x6e\x64\x72\x6f\x69\x64\x2f\x6f\x73\x2f\x48\x61\x6e\x64\x6c\x65\x72\x3b\x2d\x3e\x70\x6f\x73\x74\x44\x65\x6c\x61\x79\x65\x64\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x52\x75\x6e\x6e\x61\x62\x6c\x65\x3b\x20\x4a\x29\x5a");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v2);
+jclass &clz = cls3;
+jmethodID &mid = mth7;
+D2C_RESOLVE_METHOD(clz, mid, "android/os/Handler", "postDelayed", "(Ljava/lang/Runnable;J)Z");
+jvalue args[] = {{.l = v0},{.j = (jlong) v5}};
+v6 = (jboolean) env->CallBooleanMethodA(v2, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+return;
+
+EX_LandingPad_0:
+D2C_GET_PENDING_EX
+if(d2c_is_instance_of(env, exception, "java/lang/Throwable")) {
+goto L2;
+}
+D2C_GOTO_UNWINDBLOCK
+EX_UnwindBlock: return;
+}

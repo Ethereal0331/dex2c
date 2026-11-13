@@ -1,0 +1,560 @@
+#include "Dex2C.h"
+
+/* Lcom/ethereal/mcpe/login/MpayCredentialCodec;->normalizePortableTicket(Lorg/json/JSONObject;)Lorg/json/JSONObject; */
+extern "C" JNIEXPORT jobject JNICALL
+Java_com_ethereal_mcpe_login_MpayCredentialCodec_normalizePortableTicket__Lorg_json_JSONObject_2(JNIEnv *env, jobject thiz, jobject p9){
+jobject v0 = NULL;
+jobject v1 = NULL;
+jobject v2 = NULL;
+jobject v3 = NULL;
+jobject v4 = NULL;
+jobject v5 = NULL;
+jobject v6 = NULL;
+jobject v7 = NULL;
+jint v8;
+jint v9;
+jobject v10 = NULL;
+jobject v11 = NULL;
+jint v12;
+jlong v13;
+jlong v14;
+jclass cls0 = NULL,cls1 = NULL,cls2 = NULL,cls3 = NULL,cls4 = NULL;
+jmethodID mth0 = NULL, mth1 = NULL, mth2 = NULL, mth3 = NULL, mth4 = NULL, mth5 = NULL, mth6 = NULL, mth7 = NULL, mth8 = NULL, mth9 = NULL, mth10 = NULL, mth11 = NULL;
+v0 = (jobject)env->NewLocalRef(p9);
+L0:
+LOGD("0:const-string \x76\x30\x2c\x20\x27\x67\x61\x6d\x65\x69\x64\x27");
+if (v1) {
+LOGD("env->DeleteLocalRef(%p):v1", v1);
+env->DeleteLocalRef(v1);
+}
+v1 = (jstring) env->NewStringUTF("\x67\x61\x6d\x65\x69\x64");
+LOGD("4:invoke-virtual \x76\x39\x2c\x20\x76\x30\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x6f\x70\x74\x53\x74\x72\x69\x6e\x67\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v0);
+jclass &clz = cls0;
+jmethodID &mid = mth0;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "optString", "(Ljava/lang/String;)Ljava/lang/String;");
+jvalue args[] = {{.l = v1}};
+v2 = (jstring) env->CallObjectMethodA(v0, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("a:move-result-object \x76\x30");
+if (v1) {
+LOGD("env->DeleteLocalRef(%p):v1", v1);
+env->DeleteLocalRef(v1);
+}
+v1 = (jobject) v2;
+LOGD("c:const-string \x76\x31\x2c\x20\x27\x61\x70\x70\x49\x64\x27");
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+v3 = (jstring) env->NewStringUTF("\x61\x70\x70\x49\x64");
+LOGD("10:invoke-virtual \x76\x39\x2c\x20\x76\x31\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x6f\x70\x74\x53\x74\x72\x69\x6e\x67\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v0);
+jclass &clz = cls0;
+jmethodID &mid = mth0;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "optString", "(Ljava/lang/String;)Ljava/lang/String;");
+jvalue args[] = {{.l = v3}};
+v2 = (jstring) env->CallObjectMethodA(v0, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("16:move-result-object \x76\x32");
+if (v4) {
+LOGD("env->DeleteLocalRef(%p):v4", v4);
+env->DeleteLocalRef(v4);
+}
+v4 = (jobject) v2;
+LOGD("18:invoke-static \x76\x30\x2c\x20\x76\x32\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x4d\x70\x61\x79\x43\x72\x65\x64\x65\x6e\x74\x69\x61\x6c\x43\x6f\x64\x65\x63\x3b\x2d\x3e\x76\x61\x6c\x75\x65\x4f\x72\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls1;
+jmethodID &mid = mth1;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/MpayCredentialCodec", "valueOr", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;");
+jvalue args[] = {{.l = v1},{.l = v4}};
+v2 = (jstring) env->CallStaticObjectMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("1e:move-result-object \x76\x30");
+if (v1) {
+LOGD("env->DeleteLocalRef(%p):v1", v1);
+env->DeleteLocalRef(v1);
+}
+v1 = (jobject) v2;
+LOGD("20:const-string \x76\x32\x2c\x20\x27\x74\x69\x63\x6b\x65\x74\x27");
+if (v4) {
+LOGD("env->DeleteLocalRef(%p):v4", v4);
+env->DeleteLocalRef(v4);
+}
+v4 = (jstring) env->NewStringUTF("\x74\x69\x63\x6b\x65\x74");
+LOGD("24:invoke-virtual \x76\x39\x2c\x20\x76\x32\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x6f\x70\x74\x53\x74\x72\x69\x6e\x67\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v0);
+jclass &clz = cls0;
+jmethodID &mid = mth0;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "optString", "(Ljava/lang/String;)Ljava/lang/String;");
+jvalue args[] = {{.l = v4}};
+v2 = (jstring) env->CallObjectMethodA(v0, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("2a:move-result-object \x76\x33");
+if (v5) {
+LOGD("env->DeleteLocalRef(%p):v5", v5);
+env->DeleteLocalRef(v5);
+}
+v5 = (jobject) v2;
+LOGD("2c:const-string \x76\x34\x2c\x20\x27\x73\x6f\x75\x72\x63\x65\x27");
+if (v6) {
+LOGD("env->DeleteLocalRef(%p):v6", v6);
+env->DeleteLocalRef(v6);
+}
+v6 = (jstring) env->NewStringUTF("\x73\x6f\x75\x72\x63\x65");
+LOGD("30:invoke-virtual \x76\x39\x2c\x20\x76\x34\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x6f\x70\x74\x53\x74\x72\x69\x6e\x67\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v0);
+jclass &clz = cls0;
+jmethodID &mid = mth0;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "optString", "(Ljava/lang/String;)Ljava/lang/String;");
+jvalue args[] = {{.l = v6}};
+v2 = (jstring) env->CallObjectMethodA(v0, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("36:move-result-object \x76\x34");
+if (v6) {
+LOGD("env->DeleteLocalRef(%p):v6", v6);
+env->DeleteLocalRef(v6);
+}
+v6 = (jobject) v2;
+LOGD("38:const-string \x76\x35\x2c\x20\x27\x6e\x65\x74\x65\x61\x73\x65\x27");
+if (v7) {
+LOGD("env->DeleteLocalRef(%p):v7", v7);
+env->DeleteLocalRef(v7);
+}
+v7 = (jstring) env->NewStringUTF("\x6e\x65\x74\x65\x61\x73\x65");
+LOGD("3c:invoke-static \x76\x34\x2c\x20\x76\x35\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x4d\x70\x61\x79\x43\x72\x65\x64\x65\x6e\x74\x69\x61\x6c\x43\x6f\x64\x65\x63\x3b\x2d\x3e\x76\x61\x6c\x75\x65\x4f\x72\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls1;
+jmethodID &mid = mth1;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/MpayCredentialCodec", "valueOr", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;");
+jvalue args[] = {{.l = v6},{.l = v7}};
+v2 = (jstring) env->CallStaticObjectMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("42:move-result-object \x76\x34");
+if (v6) {
+LOGD("env->DeleteLocalRef(%p):v6", v6);
+env->DeleteLocalRef(v6);
+}
+v6 = (jobject) v2;
+LOGD("44:const-string \x76\x35\x2c\x20\x27\x78\x31\x39\x27");
+if (v7) {
+LOGD("env->DeleteLocalRef(%p):v7", v7);
+env->DeleteLocalRef(v7);
+}
+v7 = (jstring) env->NewStringUTF("\x78\x31\x39");
+LOGD("48:invoke-virtual \x76\x35\x2c\x20\x76\x30\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x2d\x3e\x65\x71\x75\x61\x6c\x73\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x4f\x62\x6a\x65\x63\x74\x3b\x29\x5a");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v7);
+jclass &clz = cls2;
+jmethodID &mid = mth2;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/String", "equals", "(Ljava/lang/Object;)Z");
+jvalue args[] = {{.l = v1}};
+v8 = (jboolean) env->CallBooleanMethodA(v7, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("4e:move-result \x76\x36");
+v9 = (jint) v8;
+LOGD("50:if-eqz \x76\x36\x2c\x20\x2b\x35\x32");
+if(v9 == 0){
+goto L6;
+}
+else {
+goto L1;
+}
+L1:
+LOGD("54:invoke-static \x76\x33\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x4d\x70\x61\x79\x43\x72\x65\x64\x65\x6e\x74\x69\x61\x6c\x43\x6f\x64\x65\x63\x3b\x2d\x3e\x69\x73\x45\x6d\x70\x74\x79\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x5a");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls1;
+jmethodID &mid = mth3;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/MpayCredentialCodec", "isEmpty", "(Ljava/lang/String;)Z");
+jvalue args[] = {{.l = v5}};
+v8 = (jboolean) env->CallStaticBooleanMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("5a:move-result \x76\x36");
+v9 = (jint) v8;
+LOGD("5c:if-nez \x76\x36\x2c\x20\x2b\x34\x63");
+if(v9 != 0){
+goto L6;
+}
+else {
+goto L2;
+}
+L2:
+LOGD("60:invoke-static \x76\x34\x2c\x20\x4c\x63\x6f\x6d\x2f\x65\x74\x68\x65\x72\x65\x61\x6c\x2f\x6d\x63\x70\x65\x2f\x6c\x6f\x67\x69\x6e\x2f\x4d\x70\x61\x79\x43\x72\x65\x64\x65\x6e\x74\x69\x61\x6c\x43\x6f\x64\x65\x63\x3b\x2d\x3e\x69\x73\x45\x6d\x70\x74\x79\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x5a");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls1;
+jmethodID &mid = mth3;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "com/ethereal/mcpe/login/MpayCredentialCodec", "isEmpty", "(Ljava/lang/String;)Z");
+jvalue args[] = {{.l = v6}};
+v8 = (jboolean) env->CallStaticBooleanMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("66:move-result \x76\x36");
+v9 = (jint) v8;
+LOGD("68:if-nez \x76\x36\x2c\x20\x2b\x34\x36");
+if(v9 != 0){
+goto L6;
+}
+else {
+goto L3;
+}
+L3:
+LOGD("6c:const-string \x76\x36\x2c\x20\x27\x5b\x41\x2d\x5a\x61\x2d\x7a\x30\x2d\x39\x2e\x5f\x2d\x5d\x7b\x31\x2c\x33\x32\x7d\x27");
+if (v10) {
+LOGD("env->DeleteLocalRef(%p):v10", v10);
+env->DeleteLocalRef(v10);
+}
+v10 = (jstring) env->NewStringUTF("\x5b\x41\x2d\x5a\x61\x2d\x7a\x30\x2d\x39\x2e\x5f\x2d\x5d\x7b\x31\x2c\x33\x32\x7d");
+LOGD("70:invoke-virtual \x76\x34\x2c\x20\x76\x36\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x2d\x3e\x6d\x61\x74\x63\x68\x65\x73\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x5a");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v6);
+jclass &clz = cls2;
+jmethodID &mid = mth4;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/String", "matches", "(Ljava/lang/String;)Z");
+jvalue args[] = {{.l = v10}};
+v8 = (jboolean) env->CallBooleanMethodA(v6, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("76:move-result \x76\x36");
+v9 = (jint) v8;
+LOGD("78:if-eqz \x76\x36\x2c\x20\x2b\x33\x36");
+if(v9 == 0){
+goto L5;
+}
+else {
+goto L4;
+}
+L4:
+LOGD("7c:new-instance \x76\x36\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+if (v10) {
+LOGD("env->DeleteLocalRef(%p):v10", v10);
+env->DeleteLocalRef(v10);
+}
+jclass &clz = cls0;
+D2C_RESOLVE_CLASS(clz,"org/json/JSONObject");
+v10 = (jobject) env->AllocObject(clz);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("80:invoke-direct \x76\x36\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x3c\x69\x6e\x69\x74\x3e\x28\x29\x56");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth5;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "<init>", "()V");
+jvalue args[] = {};
+env->CallVoidMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("86:const-string \x76\x37\x2c\x20\x27\x66\x6f\x72\x6d\x61\x74\x27");
+if (v11) {
+LOGD("env->DeleteLocalRef(%p):v11", v11);
+env->DeleteLocalRef(v11);
+}
+v11 = (jstring) env->NewStringUTF("\x66\x6f\x72\x6d\x61\x74");
+v12 = 3;
+LOGD("8c:invoke-virtual \x76\x36\x2c\x20\x76\x37\x2c\x20\x76\x38\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x70\x75\x74\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x49\x29\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth6;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "put", "(Ljava/lang/String;I)Lorg/json/JSONObject;");
+jvalue args[] = {{.l = v11},{.i = v12}};
+v2 = (jobject) env->CallObjectMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+LOGD("92:invoke-virtual \x76\x36\x2c\x20\x76\x31\x2c\x20\x76\x35\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x70\x75\x74\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x4f\x62\x6a\x65\x63\x74\x3b\x29\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth7;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "put", "(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;");
+jvalue args[] = {{.l = v3},{.l = v7}};
+v2 = (jobject) env->CallObjectMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+LOGD("98:invoke-static \x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x79\x73\x74\x65\x6d\x3b\x2d\x3e\x63\x75\x72\x72\x65\x6e\x74\x54\x69\x6d\x65\x4d\x69\x6c\x6c\x69\x73\x28\x29\x4a");
+{
+#define EX_HANDLE EX_UnwindBlock
+jclass &clz = cls3;
+jmethodID &mid = mth8;
+D2C_RESOLVE_STATIC_METHOD(clz, mid, "java/lang/System", "currentTimeMillis", "()J");
+jvalue args[] = {};
+v13 = (jlong) env->CallStaticLongMethodA(clz, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("9e:move-result-wide \x76\x37");
+v14 = (jlong) v13;
+LOGD("a0:const-string \x76\x31\x2c\x20\x27\x63\x72\x65\x61\x74\x65\x64\x41\x74\x27");
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+v3 = (jstring) env->NewStringUTF("\x63\x72\x65\x61\x74\x65\x64\x41\x74");
+LOGD("a4:invoke-virtual \x76\x39\x2c\x20\x76\x31\x2c\x20\x76\x37\x2c\x20\x76\x38\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x6f\x70\x74\x4c\x6f\x6e\x67\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4a\x29\x4a");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v0);
+jclass &clz = cls0;
+jmethodID &mid = mth9;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "optLong", "(Ljava/lang/String;J)J");
+jvalue args[] = {{.l = v3},{.j = (jlong) v14}};
+v13 = (jlong) env->CallLongMethodA(v0, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("aa:move-result-wide \x76\x37");
+v14 = (jlong) v13;
+LOGD("ac:invoke-virtual \x76\x36\x2c\x20\x76\x31\x2c\x20\x76\x37\x2c\x20\x76\x38\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x70\x75\x74\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4a\x29\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth10;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "put", "(Ljava/lang/String;J)Lorg/json/JSONObject;");
+jvalue args[] = {{.l = v3},{.j = (jlong) v14}};
+v2 = (jobject) env->CallObjectMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+LOGD("b2:const-string \x76\x31\x2c\x20\x27\x73\x6f\x75\x72\x63\x65\x46\x6f\x72\x6d\x61\x74\x27");
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+v3 = (jstring) env->NewStringUTF("\x73\x6f\x75\x72\x63\x65\x46\x6f\x72\x6d\x61\x74");
+LOGD("b6:const-string \x76\x35\x2c\x20\x27\x6d\x70\x61\x79\x2d\x74\x69\x63\x6b\x65\x74\x27");
+if (v7) {
+LOGD("env->DeleteLocalRef(%p):v7", v7);
+env->DeleteLocalRef(v7);
+}
+v7 = (jstring) env->NewStringUTF("\x6d\x70\x61\x79\x2d\x74\x69\x63\x6b\x65\x74");
+LOGD("ba:invoke-virtual \x76\x36\x2c\x20\x76\x31\x2c\x20\x76\x35\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x70\x75\x74\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x4f\x62\x6a\x65\x63\x74\x3b\x29\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth7;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "put", "(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;");
+jvalue args[] = {{.l = v3},{.l = v7}};
+v2 = (jobject) env->CallObjectMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+LOGD("c0:invoke-virtual \x76\x36\x2c\x20\x76\x32\x2c\x20\x76\x33\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x70\x75\x74\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x4f\x62\x6a\x65\x63\x74\x3b\x29\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth7;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "put", "(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;");
+jvalue args[] = {{.l = v4},{.l = v5}};
+v2 = (jobject) env->CallObjectMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+LOGD("c6:const-string \x76\x31\x2c\x20\x27\x74\x69\x63\x6b\x65\x74\x53\x6f\x75\x72\x63\x65\x27");
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+v3 = (jstring) env->NewStringUTF("\x74\x69\x63\x6b\x65\x74\x53\x6f\x75\x72\x63\x65");
+LOGD("ca:invoke-virtual \x76\x36\x2c\x20\x76\x31\x2c\x20\x76\x34\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x70\x75\x74\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x4f\x62\x6a\x65\x63\x74\x3b\x29\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth7;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "put", "(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;");
+jvalue args[] = {{.l = v3},{.l = v6}};
+v2 = (jobject) env->CallObjectMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+LOGD("d0:const-string \x76\x31\x2c\x20\x27\x75\x69\x64\x27");
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+v3 = (jstring) env->NewStringUTF("\x75\x69\x64");
+LOGD("d4:invoke-virtual \x76\x39\x2c\x20\x76\x31\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x6f\x70\x74\x53\x74\x72\x69\x6e\x67\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v0);
+jclass &clz = cls0;
+jmethodID &mid = mth0;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "optString", "(Ljava/lang/String;)Ljava/lang/String;");
+jvalue args[] = {{.l = v3}};
+v2 = (jstring) env->CallObjectMethodA(v0, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("da:move-result-object \x76\x32");
+if (v4) {
+LOGD("env->DeleteLocalRef(%p):v4", v4);
+env->DeleteLocalRef(v4);
+}
+v4 = (jobject) v2;
+LOGD("dc:invoke-virtual \x76\x36\x2c\x20\x76\x31\x2c\x20\x76\x32\x2c\x20\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b\x2d\x3e\x70\x75\x74\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x4f\x62\x6a\x65\x63\x74\x3b\x29\x4c\x6f\x72\x67\x2f\x6a\x73\x6f\x6e\x2f\x4a\x53\x4f\x4e\x4f\x62\x6a\x65\x63\x74\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v10);
+jclass &clz = cls0;
+jmethodID &mid = mth7;
+D2C_RESOLVE_METHOD(clz, mid, "org/json/JSONObject", "put", "(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;");
+jvalue args[] = {{.l = v3},{.l = v4}};
+v2 = (jobject) env->CallObjectMethodA(v10, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+if (v2) {
+LOGD("env->DeleteLocalRef(%p):v2", v2);
+env->DeleteLocalRef(v2);
+}
+return (jobject) v10;
+L5:
+LOGD("e4:new-instance \x76\x31\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x49\x6c\x6c\x65\x67\x61\x6c\x41\x72\x67\x75\x6d\x65\x6e\x74\x45\x78\x63\x65\x70\x74\x69\x6f\x6e\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+jclass &clz = cls4;
+D2C_RESOLVE_CLASS(clz,"java/lang/IllegalArgumentException");
+v3 = (jobject) env->AllocObject(clz);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("e8:const-string \x76\x32\x2c\x20\x27\xe8\xb7\xa8\xe7\xab\xaf\xe7\x99\xbb\xe5\xbd\x95\xe7\xa5\xa8\xe6\x8d\xae\xe6\x9d\xa5\xe6\xba\x90\xe6\x97\xa0\xe6\x95\x88\x27");
+if (v4) {
+LOGD("env->DeleteLocalRef(%p):v4", v4);
+env->DeleteLocalRef(v4);
+}
+v4 = (jstring) env->NewStringUTF("\xe8\xb7\xa8\xe7\xab\xaf\xe7\x99\xbb\xe5\xbd\x95\xe7\xa5\xa8\xe6\x8d\xae\xe6\x9d\xa5\xe6\xba\x90\xe6\x97\xa0\xe6\x95\x88");
+LOGD("ec:invoke-direct \x76\x31\x2c\x20\x76\x32\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x49\x6c\x6c\x65\x67\x61\x6c\x41\x72\x67\x75\x6d\x65\x6e\x74\x45\x78\x63\x65\x70\x74\x69\x6f\x6e\x3b\x2d\x3e\x3c\x69\x6e\x69\x74\x3e\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x56");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+jclass &clz = cls4;
+jmethodID &mid = mth11;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/IllegalArgumentException", "<init>", "(Ljava/lang/String;)V");
+jvalue args[] = {{.l = v4}};
+env->CallVoidMethodA(v3, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("f2:throw \x76\x31");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+env->Throw((jthrowable) v3);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+L6:
+LOGD("f4:new-instance \x76\x31\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x49\x6c\x6c\x65\x67\x61\x6c\x41\x72\x67\x75\x6d\x65\x6e\x74\x45\x78\x63\x65\x70\x74\x69\x6f\x6e\x3b");
+{
+#define EX_HANDLE EX_UnwindBlock
+if (v3) {
+LOGD("env->DeleteLocalRef(%p):v3", v3);
+env->DeleteLocalRef(v3);
+}
+jclass &clz = cls4;
+D2C_RESOLVE_CLASS(clz,"java/lang/IllegalArgumentException");
+v3 = (jobject) env->AllocObject(clz);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("f8:const-string \x76\x32\x2c\x20\x27\xe8\xb7\xa8\xe7\xab\xaf\xe7\x99\xbb\xe5\xbd\x95\xe7\xa5\xa8\xe6\x8d\xae\xe5\x86\x85\xe5\xae\xb9\xe4\xb8\x8d\xe5\xae\x8c\xe6\x95\xb4\x27");
+if (v4) {
+LOGD("env->DeleteLocalRef(%p):v4", v4);
+env->DeleteLocalRef(v4);
+}
+v4 = (jstring) env->NewStringUTF("\xe8\xb7\xa8\xe7\xab\xaf\xe7\x99\xbb\xe5\xbd\x95\xe7\xa5\xa8\xe6\x8d\xae\xe5\x86\x85\xe5\xae\xb9\xe4\xb8\x8d\xe5\xae\x8c\xe6\x95\xb4");
+LOGD("fc:invoke-direct \x76\x31\x2c\x20\x76\x32\x2c\x20\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x49\x6c\x6c\x65\x67\x61\x6c\x41\x72\x67\x75\x6d\x65\x6e\x74\x45\x78\x63\x65\x70\x74\x69\x6f\x6e\x3b\x2d\x3e\x3c\x69\x6e\x69\x74\x3e\x28\x4c\x6a\x61\x76\x61\x2f\x6c\x61\x6e\x67\x2f\x53\x74\x72\x69\x6e\x67\x3b\x29\x56");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+jclass &clz = cls4;
+jmethodID &mid = mth11;
+D2C_RESOLVE_METHOD(clz, mid, "java/lang/IllegalArgumentException", "<init>", "(Ljava/lang/String;)V");
+jvalue args[] = {{.l = v4}};
+env->CallVoidMethodA(v3, mid, args);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+LOGD("102:throw \x76\x31");
+{
+#define EX_HANDLE EX_UnwindBlock
+D2C_NOT_NULL(v3);
+env->Throw((jthrowable) v3);
+D2C_CHECK_PENDING_EX;
+#undef EX_HANDLE
+}
+EX_UnwindBlock: return NULL;
+}

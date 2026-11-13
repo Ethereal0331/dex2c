@@ -10,3 +10,4 @@ tools/apktool.jar
 *.apk
 *.idsig
 work/
+*.dex2c-orig

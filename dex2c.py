@@ -20,6 +20,7 @@ Usage:
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -88,13 +89,103 @@ def find_library(apk, abi):
     return None
 
 
-def compile_linked(work, src_dir, apk, target_so, abi):
-    """Builds the converted sources into the module's existing library."""
-    project = os.path.join(work, "link-project")
+def compile_with_project(work, src_dir, build_script, target_so, abi):
+    """Drops the converted sources into the project and runs its own build.
+
+    This keeps every symbol the project library already exported, which a
+    template build would silently drop.
+    """
+    project_root = os.path.dirname(os.path.abspath(build_script))
+    target_dir = os.path.join(project_root, "dex2c")
+    if os.path.exists(target_dir):
+        shutil.rmtree(target_dir)
+    os.makedirs(target_dir)
+    for name in os.listdir(src_dir):
+        if name.endswith((".cpp", ".h")):
+            shutil.copy(os.path.join(src_dir, name), os.path.join(target_dir, name))
+
+    output = os.path.join(work, target_so)
+    env = native_env()
+    # Hand the converted sources to the build script without editing it.
+    sources = " ".join(
+        os.path.join(target_dir, name)
+        for name in sorted(os.listdir(target_dir))
+        if name.endswith(".cpp")
+    )
+    env["EXTRA_SRCS"] = sources
+    env["EXTRA_INC"] = target_dir
+    subprocess.check_call(["bash", build_script, output], cwd=project_root, env=env)
+    if not os.path.exists(output):
+        raise SystemExit("project build produced no library at " + output)
+    return output
+
+
+def extend_exports(map_path, symbols):
+    """Adds symbols to a version script so they survive --gc-sections."""
+    if not map_path or not os.path.exists(map_path):
+        return
+    backup = map_path + ".dex2c-orig"
+    if not os.path.exists(backup):
+        shutil.copy(map_path, backup)
+    with open(map_path, encoding="utf-8") as fp:
+        content = fp.read()
+    missing = [name for name in symbols if name not in content]
+    if not missing:
+        return
+    additions = "".join("    " + name + ";\n" for name in missing)
+    content = content.replace("  local:", additions + "  local:", 1)
+    with open(map_path, "w", encoding="utf-8") as fp:
+        fp.write(content)
+    log("extended exports: " + ", ".join(missing))
+
+
+def collect_symbols(src_dir):
+    """Lists the JNI entry points the converted sources define."""
+    pattern = re.compile(r"\b(Java_[A-Za-z0-9_]+)\s*\(")
+    names = set()
+    for name in os.listdir(src_dir):
+        if not name.endswith(".cpp"):
+            continue
+        with open(os.path.join(src_dir, name), encoding="utf-8", errors="ignore") as fp:
+            content = fp.read()
+        names.update(pattern.findall(content))
+    names.add("JNI_OnLoad")
+    names.add("d2c_register_all")
+    return sorted(names)
+
+
+def restore_exports(map_path):
+    """Puts the version script back the way it was before the build."""
+    if not map_path:
+        return
+    backup = map_path + ".dex2c-orig"
+    if os.path.exists(backup):
+        shutil.copy(backup, map_path)
+        os.remove(backup)
+
+
+def compile_linked(work, src_dir, apk, target_so, abi, project=None):
+    """Builds the converted sources together with the project's own native code.
+
+    A project build script is required when the target library holds more than
+    the converted methods; without it the rebuilt library would lose whatever it
+    previously provided.
+    """
+    cfg = load_config()["library"]
+    build_script = project or cfg.get("build_script") or ""
+    if build_script:
+        exports_map = cfg.get("exports_map", "")
+        extend_exports(exports_map, collect_symbols(src_dir))
+        try:
+            return compile_with_project(work, src_dir, build_script, target_so, abi)
+        finally:
+            restore_exports(exports_map)
+
+    project_dir = os.path.join(work, "link-project")
     if os.path.exists(project):
         shutil.rmtree(project)
     shutil.copytree(os.path.join(ROOT, "project"), project)
-    nc = os.path.join(project, "jni", "nc")
+    nc = os.path.join(project_dir, "jni", "nc")
     for name in os.listdir(src_dir):
         if name.endswith((".cpp", ".h")):
             shutil.copy(os.path.join(src_dir, name), os.path.join(nc, name))
@@ -105,7 +196,7 @@ def compile_linked(work, src_dir, apk, target_so, abi):
         module = module[3:]
     if module.endswith(".so"):
         module = module[:-3]
-    mk = os.path.join(project, "jni", "Android.mk")
+    mk = os.path.join(project_dir, "jni", "Android.mk")
     with open(mk, encoding="utf-8") as fp:
         content = fp.read()
     content = content.replace("LOCAL_MODULE    := stub", "LOCAL_MODULE    := " + module)
@@ -124,10 +215,10 @@ def compile_linked(work, src_dir, apk, target_so, abi):
     env = native_env()
     ndk = load_config()["ndk_dir"]
     subprocess.check_call(
-        [os.path.join(ndk, "ndk-build"), "-C", project, "-j" + str(os.cpu_count() or 4)],
+        [os.path.join(ndk, "ndk-build"), "-C", project_dir, "-j" + str(os.cpu_count() or 4)],
         env=env,
     )
-    return os.path.join(project, "libs", abi, target_so)
+    return os.path.join(project_dir, "libs", abi, target_so)
 
 
 def inject_entry(converted, work, library_name):
@@ -205,6 +296,8 @@ def main():
     parser.add_argument("--skip-synthetic", action="store_true", default=True,
                         help="skip synthetic methods (default)")
     parser.add_argument("--keep-synthetic", dest="skip_synthetic", action="store_false")
+    parser.add_argument("--build-script",
+                        help="project native build script; keeps existing exports")
     parser.add_argument("--work-dir", help="scratch directory; defaults next to the output")
     args = parser.parse_args()
 
@@ -233,7 +326,7 @@ def main():
     if mode == "link":
         log("linking converted code into " + target_so)
         linked_lib = compile_linked(work, os.path.join(src_dir, "jni", "nc"),
-                                    args.input, target_so, abi)
+                                    args.input, target_so, abi, args.build_script)
 
     log("assembling apk")
     converted = os.path.join(work, "converted.apk")
