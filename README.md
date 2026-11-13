@@ -19,7 +19,9 @@ library.
 
 `link` compiles the converted code into a library the module already ships,
 replacing it. Use this when the module loads exactly one library and cannot
-load a second one.
+load a second one. The script also injects the load call into the entry class
+named by `assets/xposed_init`, so the library is loaded before any converted
+method runs. Nothing has to be changed in the module.
 
 ```bash
 python3 dex2c.py -a module.apk -o out.apk \
@@ -62,6 +64,15 @@ Java. Those do not survive conversion.
 | `--filter` | custom rule file |
 | `--keep-synthetic` | also convert synthetic methods |
 | `--work-dir` | scratch directory, defaults beside the output |
+
+## What the tool does by itself
+
+- Creates the Python environment and fetches apktool on first run.
+- Appends `so` to `doNotCompress` so native libraries stay mapped from the APK.
+- Sets `extractNativeLibs` so the platform can resolve packaged libraries.
+- In link mode: renames the native module, drops the stub, replaces the target
+  library and injects the load call into the entry class.
+- Signs the result.
 
 ## Requirements
 

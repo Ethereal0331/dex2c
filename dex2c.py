@@ -130,8 +130,32 @@ def compile_linked(work, src_dir, apk, target_so, abi):
     return os.path.join(project, "libs", abi, target_so)
 
 
-def assemble(converted, out, library_mode, linked_lib, abi, target_so):
+def inject_entry(converted, work, library_name):
+    """Decompiles, injects the library load, and recompiles."""
     tools = os.path.join(ROOT, "tools")
+    decompiled = os.path.join(work, "inject")
+    if os.path.exists(decompiled):
+        shutil.rmtree(decompiled)
+    subprocess.check_call(
+        ["java", "-jar", os.path.join(tools, "apktool.jar"), "d", "-r", "-f",
+         "-o", decompiled, converted],
+        env=native_env(),
+    )
+    subprocess.check_call(
+        [os.path.join(VENV, "bin", "python"), os.path.join(ROOT, "inject.py"),
+         decompiled, library_name],
+        env=native_env(),
+    )
+    rebuilt = os.path.join(work, "injected.apk")
+    subprocess.check_call(
+        ["java", "-jar", os.path.join(tools, "apktool.jar"), "b",
+         "-o", rebuilt, decompiled],
+        env=native_env(),
+    )
+    return rebuilt
+
+
+def assemble(converted, out, library_mode, linked_lib, abi, target_so):
     tmp = converted + ".assembled"
     with zipfile.ZipFile(converted) as src, zipfile.ZipFile(tmp, "w") as dst:
         for info in src.infolist():
@@ -214,6 +238,13 @@ def main():
     log("assembling apk")
     converted = os.path.join(work, "converted.apk")
     if mode == "link":
+        library_name = target_so
+        if library_name.startswith("lib"):
+            library_name = library_name[3:]
+        if library_name.endswith(".so"):
+            library_name = library_name[:-3]
+        log("injecting library load into the entry point")
+        converted = inject_entry(converted, work, library_name)
         assemble(converted, args.output, mode, linked_lib, abi, target_so)
     else:
         shutil.copy(converted, args.output)

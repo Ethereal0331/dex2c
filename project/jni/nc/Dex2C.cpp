@@ -293,7 +293,12 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         return JNI_ERR;
     }
 
-    // Registration is deferred to the Java side, where the module loader is known.
     cache_well_known_classes(env);
+    // Try to register right away; when the loader is not resolved yet the Java side
+    // calls d2c_register_all once it has one.
+    const char *result = dynamic_register_compile_methods(env);
+    if (result != nullptr) {
+        LOGD("d2c register deferred: %s", result);
+    }
     return JNI_VERSION_1_6;
 }

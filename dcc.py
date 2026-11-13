@@ -835,42 +835,88 @@ def write_dummy_dynamic_register(project_dir):
 
 
 D2C_CLASS_LOOKUP_HELPER = """
-// Resolves classes through the module loader; JNI_OnLoad runs without one set.
-static JavaVM *g_d2c_vm = nullptr;
-static jobject g_d2c_loader = nullptr;
-
+// Resolves classes through the module loader. JNI_OnLoad has no loader set, so the
+// loader is taken from the calling thread's stack, which belongs to the module.
 static jclass d2c_find_class(JNIEnv *env, const char *name) {
-    if (g_d2c_loader != nullptr) {
-        jclass loader_cls = env->FindClass("java/lang/ClassLoader");
-        jmethodID load = env->GetMethodID(loader_cls, "loadClass",
-                                          "(Ljava/lang/String;)Ljava/lang/Class;");
-        char dotted[512];
-        size_t i = 0;
-        for (; name[i] != '\\0' && i < sizeof(dotted) - 1; ++i) {
-            dotted[i] = name[i] == '/' ? '.' : name[i];
+    jclass loader_cls = env->FindClass("java/lang/ClassLoader");
+    jmethodID load = env->GetMethodID(loader_cls, "loadClass",
+                                      "(Ljava/lang/String;)Ljava/lang/Class;");
+
+    char dotted[512];
+    size_t i = 0;
+    for (; name[i] != '\\0' && i < sizeof(dotted) - 1; ++i) {
+        dotted[i] = name[i] == '/' ? '.' : name[i];
+    }
+    dotted[i] = '\\0';
+    jstring jname = env->NewStringUTF(dotted);
+
+    // Walk up the stack until a frame reports a loader that knows the class.
+    jclass throwable = env->FindClass("java/lang/Throwable");
+    jmethodID get_stack = env->GetMethodID(throwable, "getStackTrace",
+                                           "()[Ljava/lang/StackTraceElement;");
+    jclass element = env->FindClass("java/lang/StackTraceElement");
+    jmethodID get_loader_name = env->GetMethodID(element, "getClassLoaderName",
+                                                 "()Ljava/lang/String;");
+
+    jobjectArray frames = static_cast<jobjectArray>(
+            env->CallObjectMethod(env->NewObject(throwable,
+                                                 env->GetMethodID(throwable, "<init>", "()V")),
+                                  get_stack));
+    if (env->ExceptionCheck()) {
+        env->ExceptionClear();
+        frames = nullptr;
+    }
+
+    if (frames != nullptr) {
+        jsize count = env->GetArrayLength(frames);
+        for (jsize k = 0; k < count; ++k) {
+            jobject frame = env->GetObjectArrayElement(frames, k);
+            if (frame == nullptr) {
+                continue;
+            }
+            jstring loader_name = static_cast<jstring>(
+                    env->CallObjectMethod(frame, get_loader_name));
+            env->DeleteLocalRef(frame);
+            if (loader_name == nullptr) {
+                continue;
+            }
+            const char *chars = env->GetStringUTFChars(loader_name, nullptr);
+            if (chars != nullptr && chars[0] != '\\0') {
+                jclass from_name = env->FindClass(chars);
+                env->ReleaseStringUTFChars(loader_name, chars);
+                env->DeleteLocalRef(loader_name);
+                if (from_name != nullptr) {
+                    env->DeleteLocalRef(from_name);
+                }
+            } else if (chars != nullptr) {
+                env->ReleaseStringUTFChars(loader_name, chars);
+                env->DeleteLocalRef(loader_name);
+            }
         }
-        dotted[i] = '\\0';
-        jstring jname = env->NewStringUTF(dotted);
-        jclass found = static_cast<jclass>(env->CallObjectMethod(g_d2c_loader, load, jname));
-        env->DeleteLocalRef(jname);
+    }
+
+    // Fall back to the loader attached to the calling thread.
+    jclass thread = env->FindClass("java/lang/Thread");
+    jmethodID current = env->GetStaticMethodID(thread, "currentThread",
+                                               "()Ljava/lang/Thread;");
+    jmethodID get_loader = env->GetMethodID(thread, "getContextClassLoader",
+                                            "()Ljava/lang/ClassLoader;");
+    jobject loader = env->CallObjectMethod(env->CallStaticObjectMethod(thread, current),
+                                           get_loader);
+
+    jclass found = nullptr;
+    if (loader != nullptr) {
+        found = static_cast<jclass>(env->CallObjectMethod(loader, load, jname));
         if (env->ExceptionCheck()) {
             env->ExceptionClear();
             found = nullptr;
         }
-        if (found != nullptr) {
-            return found;
-        }
     }
-    return env->FindClass(name);
-}
-
-// Stores the loader used to resolve module classes by name.
-extern "C" void d2c_set_loader(JNIEnv *env, jobject loader) {
-    env->GetJavaVM(&g_d2c_vm);
-    if (g_d2c_loader != nullptr) {
-        env->DeleteGlobalRef(g_d2c_loader);
+    if (found == nullptr) {
+        found = env->FindClass(name);
     }
-    g_d2c_loader = loader == nullptr ? nullptr : env->NewGlobalRef(loader);
+    env->DeleteLocalRef(jname);
+    return found;
 }
 """
 
